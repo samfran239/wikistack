@@ -5,20 +5,19 @@ const bodyParser = require('body-parser'); //do this in the routes;
 const layout = require('./views/layout');
 const models = require('./models') //used to be const { db, Page, User } = require('./models')
 const PORT = 3000;
-
+const wikiRoutes = require('./routes/wiki');
+const userRoutes = require('./routes/user');
 app.use(morgan('dev'));
-
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded (http url?)
-
-
 app.use(express.static(__dirname + '/public'));
 
-
-// app.use('/', routes)
+app.use('/wiki', wikiRoutes);
+app.use('/user', userRoutes);
 
 
 app.get('/', (req, res) => {
+  res.redirect('/wiki');
   res.send(layout(`Hello World!`));
 })
 
