@@ -8,7 +8,7 @@ const PORT = 3000;
 const wikiRoutes = require('./routes/wiki');
 const userRoutes = require('./routes/user');
 app.use(morgan('dev'));
-app.use(bodyParser.json()); // for parsing application/json
+//app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded (http url?)
 app.use(express.static(__dirname + '/public'));
 
